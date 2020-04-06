@@ -1,0 +1,25 @@
+.wrap {
+	margin: auto;
+	padding: 30px;
+}
+
+.back {
+	position: absolute;
+	top: -30px;
+	left: 0;
+
+	color: rgb(63, 73, 87);
+	font-size: 14px;
+}
+
+.text {
+	position: relative;
+	padding: 30px;
+
+	background-color: rgb(63, 73, 87);
+	box-shadow: 0 3px 20px rgba(63, 73, 87, 0.5);
+
+	p {
+		line-height: 1.5em;
+	}
+}

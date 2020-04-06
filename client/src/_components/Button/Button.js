@@ -6,12 +6,13 @@ export default function Button ({
 	type = 'button',
 	look = 'primary',
 	children,
+	className,
 	...props
 }) {
 	return (
 		<button
 			type={type}
-			className={cls(css.button, css[look])}
+			className={cls(css.button, css[look], className)}
 			{...props}
 		>
 			{children}

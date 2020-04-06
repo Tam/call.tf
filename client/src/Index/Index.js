@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import css from './Index.module.scss';
+import { Link, useHistory } from 'react-router-dom';
 import Button from '../_components/Button/Button';
 import Input from '../_components/Input/Input';
 import Form from '../_components/Form';
 import cls from '../_util/cls';
 
 export default function Index () {
+	const history = useHistory();
 	const [tab, setTab] = useState('join');
 
 	const onJoinSubmit = data => {
 		console.log(data);
+		history.push(`/${data.code}`);
 	};
 
 	const onCreateSubmit = data => {
@@ -60,6 +63,19 @@ export default function Index () {
 					<Button type="submit">Create</Button>
 				</Form>
 			)}
+
+			<footer className={css.footer}>
+				<Link to="/about">About</Link>
+			</footer>
+
+			<a
+				className={css.credit}
+				href="https://dribbble.com/shots/2350297-Day-007-Settings-Daily-UI"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				UI Inspired by Willionaire on Dribbble
+			</a>
 		</div>
 	);
 }
