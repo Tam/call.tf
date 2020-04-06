@@ -1,0 +1,32 @@
+.label {
+	display: block;
+	margin-bottom: 15px;
+}
+
+.name {
+	display: block;
+	margin-bottom: 5px;
+
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.input {
+	display: block;
+	width: 100%;
+	padding: 10px 0;
+
+	color: #fff;
+	font-size: 18px;
+	text-indent: 20px;
+
+	appearance: none;
+	background: none;
+	border: 1px solid rgb(132, 141, 158);
+
+	transition: border-color 0.15s ease;
+
+	&:focus {
+		border-color: rgb(237, 161, 111);
+	}
+}

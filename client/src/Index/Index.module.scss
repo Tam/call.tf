@@ -1,5 +1,38 @@
 .wrap {
 	margin: auto;
+}
+
+.tabs {
+	display: flex;
+	margin-bottom: 10px;
+
+	background-color: rgb(63, 73, 87);
+	box-shadow: 0 3px 20px rgba(63, 73, 87, 0.5);
+
+	button {
+		display: block;
+		width: 50%;
+		padding: 20px 30px;
+
+		color: #fff;
+		font-size: 16px;
+		font-weight: bold;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+
+		appearance: none;
+		background: none;
+		border: none;
+		border-bottom: 3px solid transparent;
+		cursor: pointer;
+
+		&.active {
+			border-bottom-color: rgb(237, 161, 111);
+		}
+	}
+}
+
+.form {
 	padding: 50px;
 
 	background-color: rgb(63, 73, 87);

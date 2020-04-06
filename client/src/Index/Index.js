@@ -1,12 +1,65 @@
-import React from 'react';
+import React, { useState } from 'react';
 import css from './Index.module.scss';
-import { Link } from 'react-router-dom';
+import Button from '../_components/Button/Button';
+import Input from '../_components/Input/Input';
+import Form from '../_components/Form';
+import cls from '../_util/cls';
 
 export default function Index () {
+	const [tab, setTab] = useState('join');
+
+	const onJoinSubmit = data => {
+		console.log(data);
+	};
+
+	const onCreateSubmit = data => {
+		console.log(data);
+	};
+
 	return (
 		<div className={css.wrap}>
-			<p>index</p>
-			<p><Link to="/3h8d3h8">Join Call</Link></p>
+			<div className={css.tabs}>
+				<button
+					className={cls({ [css.active]: tab === 'join' })}
+					onClick={() => setTab('join')}
+				>
+					Join
+				</button>
+				<button
+					className={cls({ [css.active]: tab === 'create' })}
+					onClick={() => setTab('create')}
+				>
+					Create
+				</button>
+			</div>
+
+			{tab === 'join' && (
+				<Form onSubmit={onJoinSubmit} className={css.form}>
+					<Input
+						label="Code"
+						name="code"
+						required
+					/>
+					<Input
+						label="Password"
+						type="password"
+						name="password"
+					/>
+
+					<Button type="submit">Join</Button>
+				</Form>
+			)}
+			{tab === 'create' && (
+				<Form onSubmit={onCreateSubmit} className={css.form}>
+					<Input
+						label="Password"
+						type="password"
+						name="password"
+					/>
+
+					<Button type="submit">Create</Button>
+				</Form>
+			)}
 		</div>
 	);
 }
