@@ -67,15 +67,6 @@ export default function Index () {
 			<footer className={css.footer}>
 				<Link to="/about">About</Link>
 			</footer>
-
-			<a
-				className={css.credit}
-				href="https://dribbble.com/shots/2350297-Day-007-Settings-Daily-UI"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				UI Inspired by Willionaire on Dribbble
-			</a>
 		</div>
 	);
 }

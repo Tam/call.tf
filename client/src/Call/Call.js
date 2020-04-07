@@ -49,6 +49,12 @@ export default function Call () {
 		}
 	}, [localVideo]);
 
+	const onHangUp = () => {
+		localVideo.current.srcObject.getTracks().forEach(t => t.stop());
+		remoteVideo.current.srcObject.getTracks().forEach(t => t.stop());
+		history.push('/');
+	};
+
 	return (
 		<>
 			<div className={cls(css.loading, { [css.hidden]: !busy })}>
@@ -67,7 +73,7 @@ export default function Call () {
 					ref={remoteVideo}
 				/>
 				<footer className={css.controls}>
-					<Button onClick={() => history.push('/')}>
+					<Button onClick={onHangUp}>
 						Hang Up
 					</Button>
 					<Button look="secondary" onClick={() => setMute(!mute)}>
