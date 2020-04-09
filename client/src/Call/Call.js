@@ -23,27 +23,32 @@ export default function Call () {
 			// TODO: RTCPeerConnection
 
 			// Get local webcam
-			navigator.mediaDevices.getUserMedia({ audio: true, video: true})
-				.then(async stream => {
-					await Promise.all([
-						new Promise(resolve => {
-							lv.srcObject = stream;
-							lv.onloadedmetadata = () => {
-								lv.play();
-								resolve();
-							};
-						}),
-						new Promise(resolve => {
-							rv.srcObject = stream;
-							rv.onloadedmetadata = () => {
-								rv.play();
-								resolve();
-							};
-						}),
-					]);
+			navigator.mediaDevices.getUserMedia({
+				audio: true,
+				video: {
+					width: { min: 640, ideal: 1280, max: 1920 },
+					height: { min: 480, ideal: 720, max: 1080 },
+				},
+			}).then(async stream => {
+				await Promise.all([
+					new Promise(resolve => {
+						lv.srcObject = stream;
+						lv.onloadedmetadata = () => {
+							lv.play();
+							resolve();
+						};
+					}),
+					new Promise(resolve => {
+						rv.srcObject = stream;
+						rv.onloadedmetadata = () => {
+							rv.play();
+							resolve();
+						};
+					}),
+				]);
 
-					setBusy(false);
-				});
+				setBusy(false);
+			}).catch(console.error);
 		} catch (e) {
 			console.error(e);
 		}
@@ -67,11 +72,12 @@ export default function Call () {
 					className={css.local}
 					ref={localVideo}
 				/>
-				<video
-					autoPlay
-					className={css.remote}
-					ref={remoteVideo}
-				/>
+				<div className={css.remote}>
+					<video
+						autoPlay
+						ref={remoteVideo}
+					/>
+				</div>
 				<footer className={css.controls}>
 					<Button onClick={onHangUp}>
 						Hang Up
